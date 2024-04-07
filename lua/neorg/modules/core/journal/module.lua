@@ -252,13 +252,7 @@ module.private = {
                                 end
 
                                 -- If it's a .norg file, also ensure it is a day entry
-                                if
-                                    dtype == "file"
-                                    and (
-                                        string.match(dname, "%d%d%.norg")
-                                        or string.match(dname, "%d%d%.neorg%.encrypted")
-                                    )
-                                then
+                                if dtype == "file" and string.match(dname, "%d%d%.norg") then
                                     -- Split the file name
                                     local file = vim.split(dname, ".", { plain = true })
 
@@ -273,7 +267,7 @@ module.private = {
                                             tonumber(name),
                                             tonumber(mname),
                                             tonumber(file[1]),
-                                            "{:$"
+                                            "{/ ~/"
                                                 .. workspace_name_for_links
                                                 .. config.pathsep
                                                 .. module.config.public.journal_folder
@@ -283,7 +277,8 @@ module.private = {
                                                 .. mname
                                                 .. config.pathsep
                                                 .. file[1]
-                                                .. ":}",
+                                                .. ".norg.encrypted"
+                                                .. "}",
                                             title,
                                         })
                                     end)
@@ -297,10 +292,7 @@ module.private = {
                 -- If it is a .norg file, but it's not any user generated file.
                 -- The match is here to avoid handling files made by the user, like a template file, or
                 -- the toc file
-                if
-                    type == "file"
-                    and (string.match(name, "%d+-%d+-%d+%.norg") or string.match(name, "%d+-%d+-%d+%.neorg%.encrypted"))
-                then
+                if type == "file" and string.match(name, "%d+-%d+-%d+%.norg") then
                     -- Split yyyy-mm-dd to a table
                     local file = vim.split(name, ".", { plain = true })
                     local parts = vim.split(file[1], "-")
