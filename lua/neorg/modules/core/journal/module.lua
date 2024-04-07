@@ -267,7 +267,7 @@ module.private = {
                                             tonumber(name),
                                             tonumber(mname),
                                             tonumber(file[1]),
-                                            "{/ ~/"
+                                            "{/ ~"
                                                 .. workspace_name_for_links
                                                 .. config.pathsep
                                                 .. module.config.public.journal_folder
