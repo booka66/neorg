@@ -50,11 +50,11 @@ module.config.public = {
 
                     -- Marks the task under the cursor as "recurring"
                     -- ^mark Task as Recurring
-                    {
-                        leader .. "tr",
-                        "core.qol.todo_items.todo.task_recurring",
-                        opts = { desc = "[neorg] Mark as Recurring" },
-                    },
+                    -- {
+                    --     leader .. "tr",
+                    --     "core.qol.todo_items.todo.task_recurring",
+                    --     opts = { desc = "[neorg] Mark as Recurring" },
+                    -- },
 
                     -- Marks the task under the cursor as "important"
                     -- ^mark Task as Important
